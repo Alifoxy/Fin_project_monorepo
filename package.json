@@ -1,0 +1,26 @@
+{
+  "name": "c",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "packageManager": "npm@8.5.0",
+  "scripts": {
+    "dev": "turbo run dev --parallel",
+    "build": "turbo run build"
+  },
+  "author": "",
+  "license": "ISC",
+  "npm": {
+    "include": [
+      "packages/*"
+    ]
+  },
+  "workspaces": [
+    "packages/*"
+  ],
+  "devDependencies": {
+    "prettier": "^2.8.1",
+    "typescript": "^4.9.4",
+    "turbo": "^2.5.5"
+  }
+}
