@@ -1,0 +1,89 @@
+.records{
+    box-sizing: border-box;
+    display: table;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: flex-start;
+    font-family: "Trebuchet MS", sans-serif;
+    font-size: 20px;
+    color: white;
+    background-color: #709bad;
+    border-radius: 30px;
+    border: 5px dashed #bee7ff;
+    width: 1370px;
+    height: fit-content;
+    padding: 10px;
+}
+
+.records2{
+    display: flex;
+    height: 300px;
+}
+
+.record{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    border-radius: 30px;
+    width: 1360px;
+    padding: 5px 0 5px 0;
+}
+
+.list-none{
+    list-style-type: none;
+}
+
+.button_create_div{
+    width: 1320px;
+    margin: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+.search_div{
+    width: 1200px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.success_div{
+    display: flex;
+    width: 1350px;
+    height: 200px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #318da9;
+    border-radius: 30px;
+    margin: 10px;
+}
+
+.search_input{
+    width: 500px;
+    margin: 10px;
+    padding: 5px;
+}
+
+.input{
+    width: 800px;
+    margin-top: 10px;
+    padding: 5px;
+}
+
+.result_input{
+    display: flex;
+    height: 200px;
+}
+
+.input_title{
+    color: #318da9;
+}
+
+.rec_data_title{
+    font-size: 25px;
+}
+
+.cli_inputs{
+    height: 180px;
+}

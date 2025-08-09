@@ -1,0 +1,63 @@
+
+> web_big_fin_prj_fend@0.1.0 build
+> react-scripts build
+
+Creating an optimized production build...
+Compiled with warnings.
+
+[eslint] 
+src\components\Devices\DeviceDetails.tsx
+  Line 1:39:  'useEffect' is defined but never used            @typescript-eslint/no-unused-vars
+  Line 5:9:   'changeStatusActions' is defined but never used  @typescript-eslint/no-unused-vars
+  Line 5:30:  'resetCh' is defined but never used              @typescript-eslint/no-unused-vars
+
+src\components\Devices\DevicesSearchForm.tsx
+  Line 8:12:  'current_page' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+src\components\Devices\DevicesSearchManufacturerSelect.tsx
+  Line 10:12:  'current_page' is assigned a value but never used  @typescript-eslint/no-unused-vars
+  Line 12:12:  'search_page' is assigned a value but never used   @typescript-eslint/no-unused-vars
+
+src\components\Devices\DevicesSearchStatusSelect.tsx
+  Line 8:12:  'current_page' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+src\components\Devices\GetDeviceDetails.tsx
+  Line 14:12:  'notes_changed' is assigned a value but never used  @typescript-eslint/no-unused-vars
+  Line 14:27:  'price_changed' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+src\components\Dialogs\ErrorWindowCliExists.tsx
+  Line 2:9:  'useSelector' is defined but never used          @typescript-eslint/no-unused-vars
+  Line 3:9:  'useNavigate' is defined but never used          @typescript-eslint/no-unused-vars
+  Line 4:9:  'createRecordActions' is defined but never used  @typescript-eslint/no-unused-vars
+  Line 5:9:  'useAppDispatch' is defined but never used       @typescript-eslint/no-unused-vars
+
+src\components\Records\RecordCreateForm.tsx
+  Line 37:12:  'unmPhone' is assigned a value but never used     @typescript-eslint/no-unused-vars
+  Line 37:22:  'setUnmPhone' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+src\components\Records\RecordDetails.tsx
+  Line 1:39:  'useState' is defined but never used   @typescript-eslint/no-unused-vars
+  Line 4:24:  'resetDev' is defined but never used   @typescript-eslint/no-unused-vars
+  Line 4:34:  'resetStCh' is defined but never used  @typescript-eslint/no-unused-vars
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+File sizes after gzip:
+
+  148.12 kB  build\static\js\main.2cd83651.js
+  1.77 kB    build\static\js\400.72821e29.chunk.js
+  1.77 kB    build\static\css\main.7e21d1c6.css
+
+The project was built assuming it is hosted at /.
+You can control this with the homepage field in your package.json.
+
+The build folder is ready to be deployed.
+You may serve it with a static server:
+
+  serve -s build
+
+Find out more about deployment here:
+
+  https://cra.link/deployment
+
