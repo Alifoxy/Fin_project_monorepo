@@ -9,3 +9,9 @@ export class GenNumHelper {
     return year + month + day + time;
   }
 }
+
+export class GenIncNumHelper {
+  public static currentNum(num:number): number {
+    return num + 1
+  }
+}

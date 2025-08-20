@@ -5,7 +5,7 @@ import {useAppSelector} from "../../hooks";
 
 const DevicesSearchForm = () => {
     const {handleSubmit,reset} = useForm();
-    const {current_page} = useAppSelector(state => state.devices);
+    // const {current_page} = useAppSelector(state => state.devices);
     const [,setQuery] = useSearchParams({query:''})
     const [searchModel, setSearchModel]=useState('')
     const navigate = useNavigate();

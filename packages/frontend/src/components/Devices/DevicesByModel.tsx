@@ -25,21 +25,12 @@ const GetDevicesByModel: FC<IProps> = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        dispatch(deviceActions.getByModel({search, page}))
+        dispatch(deviceActions.getByModel({page, search}))
         dispatch(statusesActions.getAllStatuses())
         dispatch(manufacturersActions.getAllManufacturers())
         console.log(search)
     }, [dispatch, search, query, page, changeStatus, changeManufacturer, price_changed])
 
-    const byModel = () => {
-        let rec
-        if (!devices.length){
-            rec =  <h2 className={'error_title'}>Не вдалося знайти пристроїв за назвою моделі {search} :(</h2>
-        }else {
-            rec = devices.map(device => <Device key={device.id} SetDevice={device}/>)
-        }
-        return rec
-    }
 
     const back = () => {
         navigate(-1)
@@ -59,7 +50,18 @@ const GetDevicesByModel: FC<IProps> = () => {
                 <div>
                     <button onClick={back} className={'button1'}> {'<< Назад'} </button>
                 </div>
-                {byModel()}
+                {!devices.length ?
+                    <h2 className={'error_title'}>Не вдалося знайти пристроїв за назвою моделі {search} :(</h2> :
+                    <div>
+                        <div className={'table_labels table_labels3'}>
+                            <div className={'table_label_item table_label_item4'}>Модель</div>
+                            <div className={'table_label_item table_label_item3'}>Статус</div>
+                            <div className={'table_label_item table_label_item3'}>Виробник</div>
+                            <div className={'table_label_item table_label_item3'}>Вартість роботи</div>
+                        </div>
+                        {devices.map(device => <Device key={device.id} SetDevice={device}/>)}
+                    </div>
+                }
             </div>
             <div className={'pagination_div'}>
                 <Stack spacing={2} className={'pagination'}>

@@ -5,7 +5,7 @@ import {useAppSelector} from "../../hooks";
 const StatusSelectSearch = () => {
     const [,setQuery] = useSearchParams({query:''})
     const {statuses} = useAppSelector(state => state.statuses);
-    const {current_page} = useAppSelector(state => state.devices);
+    // const {current_page} = useAppSelector(state => state.devices);
     const [value, setValue] = useState('')
     const navigate = useNavigate();
 

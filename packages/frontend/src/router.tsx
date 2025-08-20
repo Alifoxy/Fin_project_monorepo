@@ -11,19 +11,14 @@ import {
     SearchClientsPage,
     ClientsByPhonePage,
     CreateRecordPage,
-    CreateRecordSuccessPage,
-    ClientExistsPage,
     DevicesPage,
     DeviceDetailsPage,
-    CreateNewSuccessPage,
-    JoinOldSuccessPage,
     ManufacturersPage,
     StatusesPage,
     StatusesCreatePage,
     ManufacturersCreatePage, DevicesByManufacturerPage, DevicesByModelPage, RecordCheckPrintPage,
 } from "./pages";
 import {DevicesByStatusPage} from "./pages";
-import {NoBaseStatusPage} from "./pages";
 import {RecordPrintPage} from "./pages";
 
 const router = createBrowserRouter([
@@ -34,21 +29,6 @@ const router = createBrowserRouter([
             },
             {
                 path: 'records_create',element:<CreateRecordPage/>,
-            },
-            {
-                path: 'records_create/success',element:<CreateRecordSuccessPage/>,
-            },
-            {
-                path: 'records_create/client_exists',element:<ClientExistsPage/>,
-            },
-            {
-                path: 'records_create/no_base_status',element:<NoBaseStatusPage/>,
-            },
-            {
-                path: 'records_create/client_exists/success/new',element:<CreateNewSuccessPage/>,
-            },
-            {
-                path: 'records_create/client_exists/success/join',element:<JoinOldSuccessPage/>,
             },
             {
                 path: 'records',element:<RecordsPage/>, children:[

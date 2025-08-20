@@ -7,9 +7,9 @@ import {deviceActions} from "../../store";
 const ManufacturerSelectSearch = () => {
     const [,setQuery] = useSearchParams({query:''})
     const {manufacturers} = useAppSelector(state => state.manufacturers);
-    const {current_page} = useAppSelector(state => state.devices)
+    // const {current_page} = useAppSelector(state => state.devices)
     const {page} = useParams()
-    const {search_page} = useParams()
+    // const {search_page} = useParams()
     const [value, setValue] = useState('')
     const navigate = useNavigate();
     const dispatch = useAppDispatch();

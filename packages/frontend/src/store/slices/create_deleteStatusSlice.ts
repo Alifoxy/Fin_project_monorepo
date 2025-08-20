@@ -5,6 +5,7 @@ import {statusService} from "../../services";
 interface IState {
     newStatus: INewStatus|null,
     isStError: boolean,
+    isStDeleteError: boolean,
     isStSuccess: boolean,
     isStLoading: boolean,
     message: unknown|string
@@ -13,6 +14,7 @@ interface IState {
 const initialState: IState = {
     newStatus:null,
     isStError: false,
+    isStDeleteError: false,
     isStSuccess: false,
     isStLoading: false,
     message:'',
@@ -52,6 +54,7 @@ const create_deleteStatusSlice = createSlice({
             state.isStLoading = false;
             state.isStSuccess = false;
             state.isStError = false;
+            state.isStDeleteError = false;
             state.message = '';
         },
     },
@@ -74,6 +77,11 @@ const create_deleteStatusSlice = createSlice({
             .addCase(deleteStatus.fulfilled, (state, action) => {
                 state.isStSuccess = true;
                 state.message = 'Status was deleted successfully!'
+            })
+            .addCase(deleteStatus.rejected, (state, action) => {
+                state.isStSuccess = false;
+                state.isStDeleteError = true;
+                state.message = 'Status cannot be deleted!'
             })
 })
 

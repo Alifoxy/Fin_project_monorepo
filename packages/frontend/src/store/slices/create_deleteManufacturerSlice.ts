@@ -5,6 +5,7 @@ import {manufacturerService} from "../../services";
 interface IState {
     newManufacturer: INewManufacturer|null,
     isMaError: boolean,
+    isMaDeleteError: boolean,
     isMaSuccess: boolean,
     isMaLoading: boolean,
     message: unknown|string
@@ -13,6 +14,7 @@ interface IState {
 const initialState: IState = {
     newManufacturer:null,
     isMaError: false,
+    isMaDeleteError: false,
     isMaSuccess: false,
     isMaLoading: false,
     message:''
@@ -52,6 +54,7 @@ const create_deleteManufacturerSlice = createSlice({
             state.isMaLoading = false;
             state.isMaSuccess = false;
             state.isMaError = false;
+            state.isMaDeleteError = false;
             state.message = '';
         },
     },
@@ -72,8 +75,15 @@ const create_deleteManufacturerSlice = createSlice({
                 state.message = 'Manufacturer already exists!';
             })
             .addCase(deleteManufacturer.fulfilled, (state, action) => {
+                state.isMaSuccess = true;
                 state.message = 'Manufacturer was deleted successfully!'
             })
+            .addCase(deleteManufacturer.rejected, (state, action) => {
+                state.isMaSuccess = false;
+                state.isMaDeleteError = true;
+                state.message = 'Manufacturer cannot be deleted!'
+            })
+
 })
 
 const {reducer: create_deleteManufacturerReducer, actions} = create_deleteManufacturerSlice

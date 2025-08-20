@@ -5,12 +5,14 @@ import Stack from "@mui/material/Stack";
 import Pagination from "@mui/material/Pagination";
 import {useNavigate, useParams, useSearchParams} from "react-router-dom";
 import {manufacturersActions} from "../../store/slices/manufacturerSlice";
+import {useSelector} from "react-redux";
 
 
 interface IProps extends PropsWithChildren {
 }
 
 const Manufacturers: FC<IProps> = () => {
+    const { isMaSuccess } = useSelector((state:any) => state.create_delete_manufacturers);
     const {manufacturers, current_page, total} = useAppSelector(state => state.manufacturers);
     const [query, setQuery]= useSearchParams({page: '1'})
     const dispatch = useAppDispatch();
@@ -19,7 +21,7 @@ const Manufacturers: FC<IProps> = () => {
 
     useEffect(() => {
         dispatch(manufacturersActions.getManufacturersByPage({page}))
-    }, [dispatch, query, page])
+    }, [dispatch, query, page, isMaSuccess])
 
     const handleChange = (event:ChangeEvent<unknown> , value:number) => {
         let current_page = value

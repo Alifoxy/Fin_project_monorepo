@@ -23,9 +23,6 @@ const Devices: FC<IProps> = () => {
     const {page} = useParams()
 
     useEffect(() => {
-        // if(changeStatus||changeManufacturer){
-        //     dispatch(deviceActions.getAllDevices({page}))
-        // }
         dispatch(deviceActions.getAllDevices({page}))
         dispatch(statusesActions.getAllStatuses())
         dispatch(manufacturersActions.getAllManufacturers())

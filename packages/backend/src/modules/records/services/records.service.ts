@@ -1,20 +1,22 @@
-import { Injectable } from '@nestjs/common';
-import { RecordRepository } from '../../repository/services/record.repository';
-import { RecordEntity } from '../../../database/entities/record.entity';
-import { GenNumHelper } from '../../../common/helpers/gen-num.helper';
-import { ClientRepository } from '../../repository/services/client.repository';
-import { ClientsService } from '../../clients/services/clients.service';
-import { ClientID, RecordID } from '../../../common/types/entity-ids.type';
-import { CreateClientDto } from '../../clients/models/dto/req/create-client.dto';
-import { ClientEntity } from '../../../database/entities/client.entity';
-import { RecordListQueryDto } from '../models/dto/req/record-list-query.dto';
-import { DevicesService } from '../../devices/services/devices.service';
-import { CreateDeviceDto } from '../../devices/models/dto/req/create-device-dto';
-import { DeviceRepository } from '../../repository/services/device.repository';
-import { StatusRepository } from '../../repository/services/status.repository';
+import {Injectable} from '@nestjs/common';
+import {RecordRepository} from '../../repository/services/record.repository';
+import {RecordEntity} from '../../../database/entities/record.entity';
+// import { GenNumHelper } from '../../../common/helpers/gen-num.helper';
+import {ClientRepository} from '../../repository/services/client.repository';
+import {ClientsService} from '../../clients/services/clients.service';
+import {ClientID, RecordID} from '../../../common/types/entity-ids.type';
+import {CreateClientDto} from '../../clients/models/dto/req/create-client.dto';
+import {ClientEntity} from '../../../database/entities/client.entity';
+import {RecordListQueryDto} from '../models/dto/req/record-list-query.dto';
+import {DevicesService} from '../../devices/services/devices.service';
+import {CreateDeviceDto} from '../../devices/models/dto/req/create-device-dto';
+import {DeviceRepository} from '../../repository/services/device.repository';
+import {StatusRepository} from '../../repository/services/status.repository';
+import {GenIncNumHelper} from "../../../common/helpers/gen-num.helper";
 
 @Injectable()
 export class RecordsService {
+  private prev: number = 0;
   constructor(
     private readonly clientsService: ClientsService,
     private readonly devicesService: DevicesService,
@@ -22,6 +24,7 @@ export class RecordsService {
     private readonly recordRepository: RecordRepository,
     private readonly deviceRepository: DeviceRepository,
     private readonly statusRepository: StatusRepository,
+
   ) {}
 
   public async create(rec: {
@@ -36,8 +39,7 @@ export class RecordsService {
 
   public async CreateRecord(cli: ClientID): Promise<RecordEntity> {
     const client = await this.clientRepository.findOneBy({ id: cli });
-    const d = new Date(Date.now());
-    const num = GenNumHelper.formDate(d);
+    const num = await this.IncrementNum(this.prev)
     return await this.recordRepository.save(
       this.recordRepository.create({
         record_num: num,
@@ -52,6 +54,12 @@ export class RecordsService {
   ): Promise<ClientEntity> {
     return await this.clientsService.create(client);
   }
+
+  public async IncrementNum(prev: number): Promise<number> {
+    const new_num = prev + 1;
+    this.prev = new_num
+    return new_num
+  };
 
   public async CreateRecordDevices(
     record: RecordID,

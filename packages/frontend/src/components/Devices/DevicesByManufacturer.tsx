@@ -55,8 +55,18 @@ const GetDevicesByManufacturer: FC<IProps> = () => {
                 <div>
                     <button onClick={back} className={'button1'}> {'<< Назад'} </button>
                 </div>
-                {devices.map(device => <Device key={device.id} SetDevice={device}/>)}
-                {/*{byManufacturer()}*/}
+                {!devices.length ?
+                    <h2 className={'error_title'}>Не вдалося знайти пристроїв за виробником {manufacturer} :(</h2> :
+                    <div>
+                        <div className={'table_labels table_labels3'}>
+                            <div className={'table_label_item table_label_item4'}>Модель</div>
+                            <div className={'table_label_item table_label_item3'}>Статус</div>
+                            <div className={'table_label_item table_label_item3'}>Виробник</div>
+                            <div className={'table_label_item table_label_item3'}>Вартість роботи</div>
+                        </div>
+                        {devices.map(device => <Device key={device.id} SetDevice={device}/>)}
+                    </div>
+                }
             </div>
             <div className={'pagination_div'}>
                 <Stack spacing={2} className={'pagination'}>

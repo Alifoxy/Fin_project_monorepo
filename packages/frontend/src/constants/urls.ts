@@ -1,4 +1,4 @@
-const baseURL = 'http://localhost:3006'
+const baseURL = `http://${process.env.REACT_APP_API_HOST}:3006`
 
 const records = '/records'
 const clients ='/clients'

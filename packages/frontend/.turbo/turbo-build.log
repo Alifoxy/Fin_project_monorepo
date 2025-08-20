@@ -12,14 +12,7 @@ src\components\Devices\DeviceDetails.tsx
   Line 5:30:  'resetCh' is defined but never used              @typescript-eslint/no-unused-vars
 
 src\components\Devices\DevicesSearchForm.tsx
-  Line 8:12:  'current_page' is assigned a value but never used  @typescript-eslint/no-unused-vars
-
-src\components\Devices\DevicesSearchManufacturerSelect.tsx
-  Line 10:12:  'current_page' is assigned a value but never used  @typescript-eslint/no-unused-vars
-  Line 12:12:  'search_page' is assigned a value but never used   @typescript-eslint/no-unused-vars
-
-src\components\Devices\DevicesSearchStatusSelect.tsx
-  Line 8:12:  'current_page' is assigned a value but never used  @typescript-eslint/no-unused-vars
+  Line 4:9:  'useAppSelector' is defined but never used  @typescript-eslint/no-unused-vars
 
 src\components\Devices\GetDeviceDetails.tsx
   Line 14:12:  'notes_changed' is assigned a value but never used  @typescript-eslint/no-unused-vars
@@ -30,6 +23,9 @@ src\components\Dialogs\ErrorWindowCliExists.tsx
   Line 3:9:  'useNavigate' is defined but never used          @typescript-eslint/no-unused-vars
   Line 4:9:  'createRecordActions' is defined but never used  @typescript-eslint/no-unused-vars
   Line 5:9:  'useAppDispatch' is defined but never used       @typescript-eslint/no-unused-vars
+
+src\components\Manufacturers\Manufacturer.tsx
+  Line 5:9:  'manufacturersActions' is defined but never used  @typescript-eslint/no-unused-vars
 
 src\components\Records\RecordCreateForm.tsx
   Line 37:12:  'unmPhone' is assigned a value but never used     @typescript-eslint/no-unused-vars
@@ -45,9 +41,9 @@ To ignore, add // eslint-disable-next-line to the line before.
 
 File sizes after gzip:
 
-  148.12 kB  build\static\js\main.2cd83651.js
-  1.77 kB    build\static\js\400.72821e29.chunk.js
-  1.77 kB    build\static\css\main.7e21d1c6.css
+  147.75 kB (-367 B)  build\static\js\main.ec8907a5.js
+  1.77 kB             build\static\js\400.72821e29.chunk.js
+  1.77 kB             build\static\css\main.7e21d1c6.css
 
 The project was built assuming it is hosted at /.
 You can control this with the homepage field in your package.json.

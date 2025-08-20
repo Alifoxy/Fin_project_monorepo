@@ -1,21 +1,38 @@
-import React, {FC, PropsWithChildren, useState} from "react";
+import React, {FC, PropsWithChildren, useEffect, useState} from "react";
 import {IStatus} from "../../interfaces";
 import {useAppDispatch} from "../../hooks";
-import {create_deleteStatusActions} from "../../store/slices/create_deleteStatusSlice";
+import {create_deleteStatusActions, resetSt} from "../../store/slices/create_deleteStatusSlice";
 import {resetStP, statusesParamsActions} from "../../store";
+// import {resetM} from "../../store/slices/create_deleteManufacturerSlice";
+import {useSelector} from "react-redux";
+import {ErrorWindow} from "../Dialogs";
 
 interface IProps extends PropsWithChildren {
     SetStatus:IStatus
 }
 
 const Status: FC<IProps> = ({SetStatus}) => {
-
+    const { isStDeleteError } = useSelector((state:any) => state.create_delete_statuses);
     const {id:s_id, status:st, created, manufacturer_required:m_rec, is_default, is_final, is_return_ready} = SetStatus;
     const [, setIsRMChecked] = useState(false);
     const [, setIsSDChecked] = useState(false);
     const [, setIsSFChecked] = useState(false);
     const [, setIsRRChecked] = useState(false);
+    const [error, setError] = useState<string | null>(null);
     const dispatch = useAppDispatch();
+
+    useEffect(() => {
+        if (isStDeleteError) {
+            setError('Цей статус неможливо видалити, він використовується в таблиці пристроїв!')
+        }
+        return () => {
+            dispatch(resetSt());
+        };
+    }, [dispatch, isStDeleteError])
+
+    const clearMessage = () => {
+        setError(null);
+    };
 
     const handleSMCheckboxChange = (event:  React.ChangeEvent<HTMLInputElement>) => {
         const checked = (event.target.checked)
@@ -86,11 +103,12 @@ const Status: FC<IProps> = ({SetStatus}) => {
 
     const DeleteS = async () => {
         await dispatch(create_deleteStatusActions.deleteStatus({id: s_id}))
-        dispatch(resetStP())
+        dispatch(resetSt())
     }
 
     return (
         <div className={'record'}>
+            <ErrorWindow message={error} onClose={clearMessage} />
             <div className={'table_item'}>{st}</div>
             <div className={'table_item'}>{created}</div>
                 <div className={'table_item2'}>
